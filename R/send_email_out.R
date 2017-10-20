@@ -41,7 +41,35 @@
 #' @importFrom mailR send.mail
 #' @importFrom glue glue
 #' @export send_email_out
-
+#' @examples
+#'
+#' # Sending email using a credentials file
+#' send_email_out(
+#'  message = email_object,
+#'  from = "mike@smile.de",
+#'  recipients = "riannone@me.com",
+#'  subject = "This is NOT junk mail.",
+#'  creds_file = "~/.e_creds")
+#'
+#' # Sending email with multiple recipients
+#' send_email_out(
+#'  message = email_object,
+#'  from = "mike@smile.de",
+#'  recipients = c("riannone@me.com", "blastula@me.com"),
+#'  subject = "This is NOT junk mail.",
+#'  creds_file = "~/.e_creds")
+#'
+#' # Sending email using environment variables
+#' send_email_out(
+#'  message = email_object,
+#'  from = "mike@smile.de",
+#'  recipients = "riannone@me.com",
+#'  subject = "This is NOT junk mail.",
+#'  sender = Sys.getenv("bls_sender"),
+#'  host = Sys.getenv("bls_host"),
+#'  port = Sys.getenv("bls_port"),
+#'  user = Sys.getenv("bls_username"),
+#'  password = Sys.getenv("bls_password"))
 send_email_out <- function(message,
                            subject = NULL,
                            from = NULL,
